@@ -4,13 +4,13 @@ const app = express();
 const path = require("path");
 const db = require("./mongoose");
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "./consult-me/build")));
+app.use(express.static(path.join(__dirname, "./build")));
 const usersRoute = require("./routes/usersRoute");
 
 app.use("/api/users", usersRoute);
 
 app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./consult-me/build/index.html"));
+  res.sendFile(path.join(__dirname, "./build/index.html"));
 });
 
 const port = process.env.PORT || 7000;
